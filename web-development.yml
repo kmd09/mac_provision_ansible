@@ -1,0 +1,76 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  sudo: no
+  roles:
+    - homebrew
+    - homebrew-cask
+    - ruby-build
+  vars:
+    # Tap external Homebrew repositories.
+    #
+    # e.g.
+    # - homebrew/binary
+    homebrew_repositories:
+
+    # Managed Homebrew packages.
+    #
+    # e.g.
+    # - package_name
+    # or
+    # { name: package_name, state: package_state, install_options: [with-baz, enable-debug] }
+    #
+    # state choices: [head, latest, present, absent, linked, unlinked] (default: latest)
+    # install_options: string or sequence (default: none)
+    homebrew_packages:
+      - readline
+      - openssl
+      - { name: openssl, state: linked, install_options: force }
+      - ansible
+      - git
+      - git-flow
+      - rbenv
+      - ruby-build
+      - the_silver_searcher
+      - vim
+      - zsh
+      - go
+      - pyenv
+      - pyenv-virtualenv
+      - tmux
+      - wget
+      - tig
+      - lua
+      - tree
+      - jq
+      - rsense
+      - nkf
+
+    # Tap external Homebrew Cask repositories.
+    homebrew_cask_repositories:
+      - caskroom/versions
+
+    # Managed Homebrew Cask packages.
+    #
+    # e.g.
+    # - package_name
+    # or
+    # { name: package_name, state: package_state }
+    #
+    # state choices: [present, absent, installed, uninstalled] (default: present)
+    homebrew_cask_packages:
+      - firefox
+      - google-chrome
+      - google-japanese-ime
+      - iterm2
+      - karabiner
+      - java
+      - slack
+      - vagrant
+      - virtualbox
+      - intellij-idea
+      - flux
+      - alfred
+      - kindle
+      - dash
+      - atom
